@@ -1,0 +1,33 @@
+
+{% extends 'sites/base.html' %}
+{% block content %}
+
+    <div class="content-section">
+        <h2>Customer Generator</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Generate Customer</button>
+        </form>
+
+        <hr>
+
+        <h3>Existing Customers</h3>
+        {% if customers %}
+            <ul class="list-group">
+                {% for customer in customers %}
+                    <li class="list-group-item">
+                        {{ customer.name }} - Registered: {{ customer.registration_date|date:"F d, Y" }}
+                        {% if customer.basket %}
+                            <span class="badge badge-success">Has Basket</span>
+                        {% else %}
+                            <span class="badge badge-danger">No Basket</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No customers yet.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

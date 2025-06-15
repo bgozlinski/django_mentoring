@@ -1,0 +1,10 @@
+{% extends 'sites/base.html' %}
+{% block content %}
+    <h2>Favorite Sites</h2>
+    {% for site in sites %}
+        <li>
+            <a class="link" href="{{ site.url }}">{{ site.site_name }}</a>
+        </li>
+    {% endfor %}
+
+{% endblock %}
