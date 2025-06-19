@@ -42,10 +42,15 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     'sites.apps.SitesConfig',
     'users.apps.UsersConfig',
+    'bugs.apps.BugsConfig',
+    'projects.apps.ProjectsConfig',
     'customers.apps.CustomersConfig',
     'baskets.apps.BasketsConfig',
+    'books.apps.BooksConfig',
+    'abstract_models.apps.AbstractModelsConfig',
     'crispy_forms',
     'crispy_bootstrap4',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -146,4 +151,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
